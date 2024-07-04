@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="assets/styles/output.css" />
+
+		<title>NNA1618</title>
+	</head>
+	<body class="bg-[#0B0B0B] h-screen">
+		<div class="px-[32px] h-full">
+			<div
+				class="grid grid-cols-3 justify-between items-center py-[13px]"
+				style="grid-template-columns: 100px 100px 100px"
+			>
+				<a href="/index.html" class="">
+					<p class="text-left">portfolio</p>
+				</a>
+				<a href="/index.html" class="flex justify-center">
+					<img src="./assets/img/star.png" alt="" class="h-[45px]" />
+				</a>
+				<a href="/index.html" class="">
+					<p class="text-right">NNA1618</p>
+				</a>
+			</div>
+
+			<div
+				class="rounded-t-[24px] h-full bg-black overflow-hidden wrapper relative"
+			>
+				<div class="flex flex-row justify-between w-full h-full">
+					<!-- левая карточка  -->
+					<div class="p-[60px] flex flex-row w-full">
+						<div
+							class="bg-black z-50 movable-block overflow-hidden"
+							id="movable-block"
+						>
+							<div
+								class="h-full flex flex-col items-center justify-stretch"
+								id="item-block1"
+							>
+								<div
+									class="flex flex-col gap-[12px] movable-text h-full w-fit mr-auto justify-center"
+									id="item-block1-margin"
+								>
+									<p
+										class="font-dmMono text-sm uppercase leading-none text-[#808080] pl-0"
+										id="movable-text"
+									>
+										/collection
+									</p>
+
+									<h2
+										class="text-[70px] leading-none uppercase transition-all duration-700"
+										id="movable-text-2"
+									>
+										home
+									</h2>
+								</div>
+
+								<div
+									class="hidden mb-[77px] scroll-image flex-col justify-center gap-[21px] place-self-center"
+									id="hidden-scroll"
+								>
+									<img
+										src="/assets/svg/scroll.svg"
+										alt=""
+										class="h-[77px]"
+									/>
+									<p
+										class="text-base uppercase font-dmMono text-[#808080]"
+									>
+										SCROLL FOR MORE
+									</p>
+								</div>
+							</div>
+
+							<div
+								class="h-full w-full flex flex-row justify-center items-center gap-[211px] hidden"
+								id="item-block2"
+							>
+								<div
+									class="w-fit h-fit"
+									id="hover-video-parent"
+								>
+									<video
+										class="rounded-lg shadow-lg h-[71dvh]"
+										id="video-without-slide"
+										muted
+									>
+										<source
+											src="./assets/videos/home black.mp4"
+										/>
+										Your browser does not support the video
+										tag.
+									</video>
+								</div>
+								<div
+									class="flex flex-col gap-[60px] max-w-[470px]"
+								>
+									<div class="flex flex-col gap-[20px]">
+										<button
+											class="w-fit"
+											onclick="unMoveLeftBlock()"
+										>
+											<p
+												class="font-dmMono text-sm text-[#808080] uppercase leading-none"
+											>
+												<- BACK TO STORE
+											</p>
+										</button>
+
+										<h2 class="text-[70px] uppercase">
+											home
+										</h2>
+									</div>
+
+									<p
+										class="font-dmMono text-sm leading-[26px] uppercase text-[#C8C8C8]"
+									>
+										Lorem ipsum dolor sit amet consectetur.
+										Tempus proin eget sagittis habitant
+										sagittis. Et dolor nibh non neque.
+										Gravida gravida proin sit eget.
+										Suspendisse pellentesque facilisi ut
+										turpis tempus.
+									</p>
+									<div
+										class="flex flex-row gap-[17px] relative z-10"
+									>
+										<div
+											class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										>
+											<div
+												class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+											></div>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												black
+											</p>
+										</div>
+
+										<div
+											class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										>
+											<div
+												class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+											></div>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												white
+											</p>
+										</div>
+									</div>
+									<button
+										class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit"
+									>
+										<p
+											class="font-dmMono text-sm leading-none uppercase"
+										>
+											buy for €49.99
+										</p>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div
+							class="flex flex-col gap-[32px] w-full h-full relative z-10"
+							id="hover-video-parent"
+						>
+							<div
+								class="flex flex-row justify-end h-[91px] z-10"
+							>
+								<button
+									id="animated-btn-sec-p"
+									onclick="moveLeftBlock()"
+									class="animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+								>
+									<p
+										class="font-dmMono text-sm leading-none uppercase"
+									>
+										buy for €49.99
+									</p>
+								</button>
+							</div>
+							<div class="flex flex-row gap-[17px] relative z-10">
+								<div
+									class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+								>
+									<div
+										class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+									></div>
+									<p
+										class="font-dmMono text-sm leading-none uppercase"
+									>
+										black
+									</p>
+								</div>
+
+								<div
+									class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+								>
+									<div
+										class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+									></div>
+									<p
+										class="font-dmMono text-sm leading-none uppercase"
+									>
+										white
+									</p>
+								</div>
+							</div>
+
+							<video
+								class="rounded-lg shadow-lg slide-in-video h-[71dvh] absolute -z-0"
+								id="video"
+								muted
+							>
+								<source src="./assets/videos/home black.mp4" />
+								Your browser does not support the video tag.
+							</video>
+						</div>
+					</div>
+					<div class="py-[31px] h-full">
+						<div class="bg-[#434343] h-full z-10 w-px"></div>
+					</div>
+					<!-- правая карточка  -->
+					<div class="p-[60px] flex flex-row w-full">
+						<div class="flex flex-col gap-[32px] w-full h-full">
+							<div
+								class="flex flex-col gap-[32px] w-full h-full relative"
+								id="hover-video-parent"
+							>
+								<div class="flex flex-row justify-between z-10">
+									<div class="flex flex-col gap-[12px]">
+										<p
+											class="font-dmMono text-sm uppercase leading-none text-[#808080]"
+										>
+											/collection
+										</p>
+
+										<h2
+											class="text-[70px] leading-none uppercase"
+										>
+											fear
+										</h2>
+									</div>
+									<button
+										id="animated-btn-sec-p"
+										class="animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+									>
+										<p
+											class="font-dmMono text-sm leading-none uppercase"
+										>
+											buy for €69.99
+										</p>
+									</button>
+								</div>
+								<div
+									class="flex flex-row gap-[17px] relative z-10"
+								>
+									<div
+										class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+									>
+										<div
+											class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+										></div>
+										<p
+											class="font-dmMono text-sm leading-none uppercase"
+										>
+											black
+										</p>
+									</div>
+
+									<div
+										class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+									>
+										<div
+											class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+										></div>
+										<p
+											class="font-dmMono text-sm leading-none uppercase"
+										>
+											white
+										</p>
+									</div>
+								</div>
+
+								<video
+									class="rounded-lg shadow-lg slide-in-video h-[71dvh] absolute -z-0"
+									id="video"
+									muted
+								>
+									<source src="assets/videos/sdf.mp4" />
+									Your browser does not support the video tag.
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="/assets/scripts/main.js"></script>
+</html>

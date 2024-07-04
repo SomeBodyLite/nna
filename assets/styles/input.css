@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Kharkiv Tone';
+	src: url('/assets/fonts/kar.ttf');
+
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'DM Mono';
+	src: url('/assets/fonts/DMMono-Medium.ttf');
+
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	@apply font-kar;
+	@apply text-white;
+}
+/* текст 1 и 3 карточки */
+.slide-in-text {
+	transform: translateX(-100%);
+	opacity: 0;
+	transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+}
+.slide-in-text-active {
+	transform: translateX(0);
+	opacity: 1;
+}
+/* кнопки 1 и 3 карточки */
+.animated-btn {
+	transform: translateX(+100%);
+	opacity: 0;
+	padding: 1rem;
+	transition: transform 3s ease-in-out, opacity 3s ease-in-out,
+		padding 0.3s ease-in-out;
+}
+.animated-btn-active {
+	transform: translateX(0);
+	opacity: 1;
+}
+.hover\:px-10:hover {
+	padding: 2rem;
+}
+/* выезд видео */
+.slide-in-video {
+	transform: translate(-50%, 450%);
+	left: 50%;
+	transition: transform 3s ease-in-out;
+}
+
+.slide-in-video-active {
+	transform: translate(-50%, 0);
+}
+
+/* 4 карточка */
+.radial-gradient-bg {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.radial-gradient-bg::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.15) 0%,
+		rgba(255, 255, 255, 0) 15%
+	);
+	transform: translate(-50%, -50%) scale(0);
+	transition: transform 1s ease-in-out;
+}
+
+.radial-gradient-bg:hover::before {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+/* видео */
+.video-container {
+	width: 640px;
+	height: 360px;
+	overflow: hidden;
+	position: relative;
+}
+.video-container video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.wrapper {
+	height: calc(100dvh - 71px);
+}
+
+/* вторая страница */
+.animated-btn-sec-p {
+	transition: padding 0.3s ease-in-out;
+}
+.animated-btn-sec-p:hover {
+	padding: 2rem;
+}
+
+.movable-block {
+	transition: all 1s ease-in-out;
+	height: 95px;
+	width: 248px;
+	position: absolute;
+	top: 60px;
+	left: 60px;
+}
+.movable-block-active {
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+.movable-text p {
+	transition: padding 1s ease-in-out;
+}
+
+.scroll-image {
+	opacity: 0;
+	transition: opacity 6s ease-in-out;
+}
+.scroll-image-active {
+	opacity: 1;
+}
