@@ -1086,7 +1086,7 @@ video {
 @font-face {
   font-family: 'Kharkiv Tone';
 
-  src: url('/assets/fonts/kar.ttf');
+  src: url('../fonts/kar.ttf');
 
   font-weight: 400;
 
@@ -1096,7 +1096,7 @@ video {
 @font-face {
   font-family: 'DM Mono';
 
-  src: url('/assets/fonts/DMMono-Medium.ttf');
+  src: url('../fonts/DMMono-Medium.ttf');
 
   font-weight: 400;
 
