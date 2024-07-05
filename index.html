@@ -6,34 +6,38 @@
 		<link rel="stylesheet" href="./assets/styles/output.css" />
 		<title>NNA1618</title>
 	</head>
-	<body class="bg-[#0B0B0B] h-dvh">
-		<div class="px-[32px]">
+	<body class="bg-[#0B0B0B] md:h-dvh h-full">
+		<div class="md:px-[32px] px-0">
 			<div
-				class="grid grid-cols-3 justify-between items-center py-[13px]"
-				style="grid-template-columns: 100px 100px 100px"
+				class="grid md:grid-cols-3 grid-cols-1 md:justify-between justify-center items-center py-[13px]"
+				style="
+					@media (min-width: 720px) {
+						grid-template-columns: 100px 100px 100px;
+					}
+				"
 			>
-				<a href="./index.html" class="">
+				<a href="./index.html" class="hidden md:block">
 					<p class="text-left">portfolio</p>
 				</a>
 				<a href="./index.html" class="flex justify-center">
 					<img src="./assets/img/star.png" alt="" class="h-[45px]" />
 				</a>
-				<a href="./index.html" class="">
+				<a href="./index.html" class="hidden md:block">
 					<p class="text-right">NNA1618</p>
 				</a>
 			</div>
 
 			<!-- основной блок -->
-			<div class="rounded-t-[24px] bg-black overflow-hidden wrapper">
+			<div class="md:rounded-t-[24px] bg-black overflow-hidden wrapper">
 				<div class="flex flex-col h-full">
 					<!-- верхняя линия -->
-					<div class="flex flex-row h-full">
+					<div class="flex md:flex-row flex-col md:h-full">
 						<!-- первая карточка -->
 						<div
 							id="hover-video-parent"
-							class="pt-[48px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative"
+							class="md:pt-[48px] pt-[32px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative h-[400px] md:h-auto"
 						>
-							<div class="flex flex-row justify-between">
+							<div class="flex flex-row justify-between z-10">
 								<p class="text-[24px] leading-normal">α</p>
 								<p
 									class="text-[24px] leading-normal text-right"
@@ -43,7 +47,7 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video h-full absolute top-[-10px] -z-0"
+								class="rounded-lg shadow-lg slide-in-video h-[99%] md:h-full absolute md:top-[-10px] -z-0"
 								id="video"
 								muted
 							>
@@ -51,8 +55,13 @@
 								Your browser does not support the video tag.
 							</video>
 
-							<div class="flex flex-row justify-between">
-								<div id="slide-text" class="slide-in-text">
+							<div
+								class="flex md:flex-row flex-col md:justify-between justify-center gap-4 md:items-end"
+							>
+								<div
+									id="slide-text"
+									class="slide-in-text mx-auto md:mx-0"
+								>
 									<img src="./assets/img/clothes.png" alt="" />
 								</div>
 								<a href="./selectPage.html">
@@ -68,10 +77,15 @@
 								</a>
 							</div>
 						</div>
-						<div class="pt-[31px] h-full relative">
-							<div class="bg-[#434343] h-full z-10 w-px"></div>
+
+						<div
+							class="md:pt-[31px] md:h-full w-full md:w-px md:px-0 px-[32px] relative"
+						>
+							<div
+								class="bg-[#434343] md:h-full z-10 md:w-px h-px w-full"
+							></div>
 							<svg
-								class="absolute bottom-[-32px] -right-[32px] z-30"
+								class="absolute bottom-[-32px] -right-[32px] z-30 hidden md:block"
 								width="64"
 								height="64"
 								viewBox="0 0 64 64"
@@ -89,7 +103,7 @@
 						</div>
 						<!-- вторая карточка  -->
 						<div
-							class="pt-[48px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative group"
+							class="md:pt-[48px] pt-[32px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative group h-[400px] md:h-auto"
 						>
 							<div
 								class="relative flex flex-row justify-between z-10"
@@ -101,40 +115,47 @@
 									02
 								</p>
 							</div>
-							<div class="relative left-1/4 top-[-120px] -z-0">
+							<div class="relative left-1/4 md:top-[-120px] -z-0">
 								<img
 									id="sec-card-img"
 									src="./assets/img/slides/slide2.png"
 									alt="img1"
-									class="absolute w-[400px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-30 rotate-[27deg] top-[-32px] -left-8 group-hover:top-[-100px] group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] h-[250px] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5] top-[-1250px]"
+									class="absolute md:w-[400px] w-[200px] md:h-[250px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-30 rotate-[27deg] top-[-32px] -left-8 group-hover:top-[-100px] group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5] top-[-1250px]"
 								/>
 								<img
 									id="sec-card-img"
 									src="./assets/img/slides/slide1.png"
 									alt="img2"
-									class="absolute w-[400px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-20 rotate-[27deg] top-0 left-0 group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] h-[250px] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5]"
+									class="absolute md:w-[400px] w-[200px] md:h-[250px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-20 rotate-[27deg] top-0 left-0 group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5]"
 								/>
 								<img
 									id="sec-card-img"
 									src="./assets/img/slides/slide3.png"
 									alt="img3"
-									class="absolute w-[400px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-10 rotate-[27deg] top-[32px] left-8 group-hover:top-[100px] group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] h-[250px] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5] top-[1250px]"
+									class="absolute md:w-[400px] w-[200px] md:h-[250px] rounded-xl select-none pointer-events-none -skew-y-[27deg] z-10 rotate-[27deg] top-[32px] left-8 group-hover:top-[100px] group-hover:skew-y-[-18deg] group-hover:rotate-[18deg] group-hover:scale-x-[1.8] duration-700 ease-in-out scale-[4.5] top-[1250px]"
 								/>
 							</div>
 
-							<div class="flex flex-row justify-between">
-								<div id="slide-text" class="slide-in-text">
+							<div
+								class="flex md:flex-row flex-col md:justify-between justify-center gap-4 md:items-end"
+							>
+								<div
+									id="slide-text"
+									class="slide-in-text mx-auto md:mx-0"
+								>
 									<img src="./assets/img/web.png" alt="" />
 								</div>
-								<button
-									id="animated-btn"
-									class="animated-btn px-[20px] py-[11px] rounded-[111px] bg-[#8B8B8B1F] h-fit self-end hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
-								>
-									<img
-										src="./assets/img/view more.png"
-										alt=""
-									/>
-								</button>
+								<a href="/">
+									<button
+										id="animated-btn"
+										class="animated-btn px-[20px] py-[11px] rounded-[111px] bg-[#8B8B8B1F] h-fit self-end hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+									>
+										<img
+											src="./assets/img/view more.png"
+											alt=""
+										/>
+									</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -145,13 +166,13 @@
 					</div>
 
 					<!-- нижняя линия  -->
-					<div class="flex flex-row h-full">
+					<div class="flex md:flex-row flex-col h-full">
 						<!-- третья карточка  -->
 						<div
 							id="hover-video-parent"
-							class="pt-[48px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative"
+							class="md:pt-[48px] pt-[32px] pb-[31px] px-[32px] w-full flex flex-col justify-between overflow-hidden relative h-[400px] md:h-full"
 						>
-							<div class="flex flex-row justify-between">
+							<div class="flex flex-row justify-between z-10">
 								<p class="text-[24px] leading-normal">γ</p>
 								<p
 									class="text-[24px] leading-normal text-right"
@@ -161,7 +182,7 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video h-full absolute -z-0"
+								class="rounded-lg shadow-lg slide-in-video md:h-full h-[93%] absolute -z-0"
 								id="video"
 								muted
 							>
@@ -172,33 +193,44 @@
 								Your browser does not support the video tag.
 							</video>
 
-							<div class="flex flex-row justify-between">
-								<div id="slide-text" class="slide-in-text">
+							<div
+								class="flex md:flex-row flex-col md:justify-between justify-center gap-4 md:items-end"
+							>
+								<div
+									id="slide-text"
+									class="slide-in-text mx-auto md:mx-0"
+								>
 									<img
 										src="./assets/img/production.png"
 										alt=""
 									/>
 								</div>
-								<button
-									id="animated-btn"
-									class="animated-btn px-[20px] py-[11px] rounded-[111px] bg-[#8B8B8B1F] h-fit self-end hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
-								>
-									<img
-										src="./assets/img/view more.png"
-										alt=""
-									/>
-								</button>
+								<a href="">
+									<button
+										id="animated-btn"
+										class="animated-btn px-[20px] py-[11px] rounded-[111px] bg-[#8B8B8B1F] h-fit self-end hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+									>
+										<img
+											src="./assets/img/view more.png"
+											alt=""
+										/>
+									</button>
+								</a>
 							</div>
 						</div>
 
 						<!-- сепаратор вертикальный -->
-						<div class="pb-[31px] h-full">
-							<div class="bg-[#434343] h-full z-10 w-px"></div>
+						<div
+							class="md:pb-[31px] md:h-full w-full md:w-px md:px-0 px-[32px] relative"
+						>
+							<div
+								class="bg-[#434343] md:h-full z-10 md:w-px h-px w-full"
+							></div>
 						</div>
 
 						<!-- четвертая карточка  -->
 						<div
-							class="pt-[48px] pb-[31px] px-[32px] w-full h-full radial-gradient-bg"
+							class="md:pt-[48px] pt-[32px] pb-[31px] px-[32px] w-full radial-gradient-bg h-[400px] md:h-full"
 						>
 							<div class="relative flex flex-row justify-between">
 								<p

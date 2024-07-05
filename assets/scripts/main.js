@@ -57,20 +57,27 @@ function handleWheel(event) {
 	}
 }
 
+let blockIsOpen = false;
 const block = document.querySelector('#movable-block');
+const header = document.querySelector('#header');
 const moveLeftBlock = () => {
+	blockIsOpen = true;
+	document.body.classList.add('overflow-hidden');
+	header.scrollIntoView({ behavior: 'smooth' });
+
 	block.addEventListener('wheel', handleWheel);
 	block.classList.add('movable-block-active');
 
 	itemBlock1Margin.classList.remove('mr-auto');
 	itemBlock1Margin.classList.add('mx-auto');
+	itemBlock1.classList.add('reverse-wrapper');
 
 	const text = document.querySelector('#movable-text');
-	text.classList.add('pl-[160px]');
+	text.classList.remove('translate-x-[-134%]');
+	text.classList.add('translate-x-[-50%]');
 
 	const textSec = document.querySelector('#movable-text-2');
-	textSec.classList.add('text-[124px]');
-	textSec.classList.remove('text-[70px]');
+	textSec.classList.add('md:text-[124px]');
 
 	const scroll = document.querySelector('#hidden-scroll');
 	scroll.classList.remove('hidden');
@@ -83,20 +90,26 @@ const moveLeftBlock = () => {
 };
 
 const unMoveLeftBlock = () => {
+	blockIsOpen = false;
+	document.body.classList.remove('overflow-hidden');
+
 	if (!flagToScroll) {
 		flagToScroll = true;
-		itemBlock1.scrollIntoView({ behavior: 'smooth' });
+		itemBlock1.scrollIntoView({ block: 'end', behavior: 'smooth' });
+
 		flagToScroll = false;
 	}
 	setTimeout(() => {
+		itemBlock1.classList.remove('reverse-wrapper');
+
 		block.classList.remove('movable-block-active');
 
 		const text = document.querySelector('#movable-text');
-		text.classList.remove('pl-[160px]');
+		text.classList.add('translate-x-[-134%]');
+		text.classList.remove('translate-x-[-50%]');
 
 		const textSec = document.querySelector('#movable-text-2');
-		textSec.classList.remove('text-[124px]');
-		textSec.classList.add('text-[70px]');
+		textSec.classList.remove('md:text-[124px]');
 
 		const scroll = document.querySelector('#hidden-scroll');
 		scroll.classList.add('hidden');

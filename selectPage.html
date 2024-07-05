@@ -7,47 +7,57 @@
 
 		<title>NNA1618</title>
 	</head>
-	<body class="bg-[#0B0B0B] h-screen">
-		<div class="px-[32px] h-full">
+	<body class="bg-[#0B0B0B] md:h-dvh h-full">
+		<div class="md:px-[32px] px-0 h-full" id="header">
 			<div
-				class="grid grid-cols-3 justify-between items-center py-[13px]"
-				style="grid-template-columns: 100px 100px 100px"
+				class="grid md:grid-cols-3 grid-cols-1 md:justify-between justify-center items-center py-[13px]"
+				style="
+					@media (min-width: 720px) {
+						grid-template-columns: 100px 100px 100px;
+					}
+				"
 			>
-				<a href="/index.html" class="">
+				<a href="/index.html" class="hidden md:block">
 					<p class="text-left">portfolio</p>
 				</a>
 				<a href="/index.html" class="flex justify-center">
 					<img src="./assets/img/star.png" alt="" class="h-[45px]" />
 				</a>
-				<a href="/index.html" class="">
+				<a href="/index.html" class="hidden md:block">
 					<p class="text-right">NNA1618</p>
 				</a>
 			</div>
 
 			<div
-				class="rounded-t-[24px] h-full bg-black overflow-hidden wrapper relative"
+				class="md:rounded-t-[24px] md:h-full bg-black xl:overflow-hidden wrapper relative"
 			>
-				<div class="flex flex-row justify-between w-full h-full">
+				<div
+					class="flex xl:flex-row flex-col justify-between w-full xl:h-full"
+				>
 					<!-- левая карточка  -->
-					<div class="p-[60px] flex flex-row w-full">
+					<div
+						class="md:p-[60px] p-[32px] flex flex-row w-full xl:h-full md:h-[550px] h-[575px] overflow-hidden"
+					>
 						<div
-							class="bg-black z-50 movable-block overflow-hidden"
+							class="bg-black z-50 movable-block overflow-auto md:overflow-hidden hidden-scroll-bar"
 							id="movable-block"
 						>
 							<div
-								class="h-full flex flex-col items-center justify-stretch"
+								class="h-full flex flex-col items-center justify-stretch duration-[1000ms]"
 								id="item-block1"
 							>
 								<div
-									class="flex flex-col gap-[12px] movable-text h-full w-fit mr-auto justify-center"
+									class="flex flex-col gap-[24px] movable-text h-full w-fit mr-auto justify-center"
 									id="item-block1-margin"
 								>
-									<p
-										class="font-dmMono text-sm uppercase leading-none text-[#808080] pl-0"
-										id="movable-text"
-									>
-										/collection
-									</p>
+									<div class="relative">
+										<p
+											class="absolute left-1/2 translate-x-[-134%] font-dmMono text-sm uppercase leading-none text-[#808080] pl-0 duration-500"
+											id="movable-text"
+										>
+											/collection
+										</p>
+									</div>
 
 									<h2
 										class="text-[70px] leading-none uppercase transition-all duration-700"
@@ -75,7 +85,7 @@
 							</div>
 
 							<div
-								class="h-full w-full flex flex-row justify-center items-center gap-[211px] hidden"
+								class="h-fit md:h-full w-full flex md:flex-row flex-col justify-center items-center xl:gap-[211px] gap-[90px] hidden bg-black"
 								id="item-block2"
 							>
 								<div
@@ -83,7 +93,7 @@
 									id="hover-video-parent"
 								>
 									<video
-										class="rounded-lg shadow-lg h-[71dvh]"
+										class="rounded-lg shadow-lg md:h-[71dvh] h-[58dvh]"
 										id="video-without-slide"
 										muted
 									>
@@ -95,7 +105,7 @@
 									</video>
 								</div>
 								<div
-									class="flex flex-col gap-[60px] max-w-[470px]"
+									class="flex flex-col gap-[60px] xl:max-w-[470px] md:max-w-[240px] p-[32px] md:p-0"
 								>
 									<div class="flex flex-col gap-[20px]">
 										<button
@@ -154,7 +164,7 @@
 										</div>
 									</div>
 									<button
-										class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit"
+										class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit mb-[102px] md:mb-0"
 									>
 										<p
 											class="font-dmMono text-sm leading-none uppercase"
@@ -176,7 +186,7 @@
 								<button
 									id="animated-btn-sec-p"
 									onclick="moveLeftBlock()"
-									class="animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+									class="md:relative absolute bottom-0 left-0 animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
 								>
 									<p
 										class="font-dmMono text-sm leading-none uppercase"
@@ -214,7 +224,7 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video h-[71dvh] absolute -z-0"
+								class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 top-[104px] md:top-0"
 								id="video"
 								muted
 							>
@@ -223,11 +233,16 @@
 							</video>
 						</div>
 					</div>
-					<div class="py-[31px] h-full">
-						<div class="bg-[#434343] h-full z-10 w-px"></div>
+
+					<div class="xl:py-[31px] py-0 px-[32px] relative z-10">
+						<div
+							class="bg-[#434343] md:h-full h-px md:w-px w-full"
+						></div>
 					</div>
 					<!-- правая карточка  -->
-					<div class="p-[60px] flex flex-row w-full">
+					<div
+						class="md:p-[60px] p-[32px] xl:h-full md:h-[550px] h-[575px] flex flex-row w-full overflow-hidden bg-black"
+					>
 						<div class="flex flex-col gap-[32px] w-full h-full">
 							<div
 								class="flex flex-col gap-[32px] w-full h-full relative"
@@ -249,7 +264,7 @@
 									</div>
 									<button
 										id="animated-btn-sec-p"
-										class="animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+										class="md:relative absolute bottom-0 animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
 									>
 										<p
 											class="font-dmMono text-sm leading-none uppercase"
@@ -289,7 +304,7 @@
 								</div>
 
 								<video
-									class="rounded-lg shadow-lg slide-in-video h-[71dvh] absolute -z-0"
+									class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 md:top-0 top-[115px]"
 									id="video"
 									muted
 								>
