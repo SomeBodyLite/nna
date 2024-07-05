@@ -47,7 +47,18 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video h-[99%] md:h-full absolute md:top-[-10px] -z-0"
+								class="rounded-lg shadow-lg slide-in-video h-[99%] md:h-full absolute md:top-[-10px] -z-0 md:hidden block"
+								id="video"
+								muted
+								autoplay
+								playsinline
+								loop
+							>
+								<source src="./assets/videos/home black.mp4" />
+								Your browser does not support the video tag.
+							</video>
+							<video
+								class="rounded-lg shadow-lg slide-in-video h-[99%] md:h-full absolute md:top-[-10px] -z-0 md:block hidden"
 								id="video"
 								muted
 							>
@@ -62,7 +73,10 @@
 									id="slide-text"
 									class="slide-in-text mx-auto md:mx-0"
 								>
-									<img src="./assets/img/clothes.png" alt="" />
+									<img
+										src="./assets/img/clothes.png"
+										alt=""
+									/>
 								</div>
 								<a href="./selectPage.html">
 									<button
@@ -182,14 +196,22 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video md:h-full h-[93%] absolute -z-0"
+								class="rounded-lg shadow-lg slide-in-video md:h-full h-[93%] absolute -z-0 md:hidden block"
+								id="video"
+								muted
+								autoplay
+								playsinline
+								loop
+							>
+								<source src="./assets/videos/production.webm" />
+								Your browser does not support the video tag.
+							</video>
+							<video
+								class="rounded-lg shadow-lg slide-in-video md:h-full h-[93%] absolute -z-0 hidden md:block"
 								id="video"
 								muted
 							>
-								<source
-									src="./assets/videos/production.webm"
-									type="video/mp4"
-								/>
+								<source src="./assets/videos/production.webm" />
 								Your browser does not support the video tag.
 							</video>
 

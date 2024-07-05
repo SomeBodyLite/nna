@@ -29,7 +29,7 @@
 			</div>
 
 			<div
-				class="md:rounded-t-[24px] md:h-full bg-black xl:overflow-hidden wrapper relative"
+				class="md:rounded-t-[24px] bg-black xl:overflow-hidden wrapper relative"
 			>
 				<div
 					class="flex xl:flex-row flex-col justify-between w-full xl:h-full"
@@ -93,7 +93,21 @@
 									id="hover-video-parent"
 								>
 									<video
-										class="rounded-lg shadow-lg md:h-[71dvh] h-[58dvh]"
+										class="rounded-lg shadow-lg h-[58vh] md:hidden block"
+										id="video-without-slide"
+										muted
+										autoplay
+										playsinline
+										loop
+									>
+										<source
+											src="./assets/videos/home black.mp4"
+										/>
+										Your browser does not support the video
+										tag.
+									</video>
+									<video
+										class="rounded-lg shadow-lg md:h-[71dvh] h-[58dvh] md:block hidden"
 										id="video-without-slide"
 										muted
 									>
@@ -224,7 +238,18 @@
 							</div>
 
 							<video
-								class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 top-[104px] md:top-0"
+								class="rounded-lg shadow-lg slide-in-video md:h-[71vh] h-[45vh] absolute -z-0 top-[104px] md:top-0 md:hidden block"
+								id="video"
+								muted
+								autoplay
+								playsinline
+								loop
+							>
+								<source src="./assets/videos/home black.mp4" />
+								Your browser does not support the video tag.
+							</video>
+							<video
+								class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 top-[104px] md:top-0 hidden md:block"
 								id="video"
 								muted
 							>
@@ -304,7 +329,18 @@
 								</div>
 
 								<video
-									class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 md:top-0 top-[115px]"
+									class="rounded-lg shadow-lg slide-in-video md:h-[71vh] h-[45vh] absolute -z-0 md:top-0 top-[115px] md:hidden block"
+									id="video"
+									muted
+									autoplay
+									playsinline
+									loop
+								>
+									<source src="assets/videos/sdf.mp4" />
+									Your browser does not support the video tag.
+								</video>
+								<video
+									class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 md:top-0 top-[115px] hidden md:block"
 									id="video"
 									muted
 								>

@@ -22,23 +22,31 @@ window.addEventListener('load', () => {
 
 	const video = document.querySelectorAll('#hover-video-parent');
 	video.forEach((e) => {
-		const video = e.querySelector('video');
-		const videoWS = e.querySelector('video-without-slide');
-		if (videoWS) {
+		const videos = e.querySelectorAll('video');
+		const videoWSs = e.querySelectorAll('video-without-slide');
+		if (videoWSs.length > 0) {
 			e.addEventListener('mouseenter', () => {
-				videoWS.play();
+				videoWSs.forEach((video) => {
+					video.play();
+				});
 			});
 
 			e.addEventListener('mouseleave', () => {
-				videoWS.pause();
+				videoWSs.forEach((video) => {
+					video.pause();
+				});
 			});
 		}
 		e.addEventListener('mouseenter', () => {
-			video.play();
+			videos.forEach((video) => {
+				video.play();
+			});
 		});
 
 		e.addEventListener('mouseleave', () => {
-			video.pause();
+			videos.forEach((video) => {
+				video.pause();
+			});
 		});
 	});
 });
