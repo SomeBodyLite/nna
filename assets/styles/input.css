@@ -142,17 +142,28 @@ body {
 .animated-btn-sec-p:hover {
 	padding: 2rem;
 }
-@media (max-width: 720px) {
+
+@media (min-width: 1200px) {
 	.movable-block {
 		transition: all 1s ease-in-out;
 		height: 95px;
-		width: 248px;
 		position: absolute;
-		top: 32px;
-		left: 32px;
 	}
 	.movable-block-active {
-		width: 100%;
+		width: calc(100vw - (64px));
+		top: 0px;
+
+		height: 100%;
+	}
+}
+@media (max-width: 1200px) {
+	.movable-block {
+		transition: all 1s ease-in-out;
+		height: 95px;
+		position: absolute;
+	}
+	.movable-block-active {
+		width: calc(100vw);
 		top: 0px;
 		left: 0px;
 		height: calc(100dvh - 71px);
@@ -162,25 +173,14 @@ body {
 	.movable-block {
 		transition: all 1s ease-in-out;
 		height: 95px;
-		width: 248px;
 		position: absolute;
-		top: 60px;
-		left: 60px;
 	}
 	.movable-block-active {
-		width: 100%;
+		width: calc(100vw - (64px));
 		top: 0px;
-		left: 0px;
+
 		height: 100%;
 	}
-}
-
-.scroll-image {
-	opacity: 0;
-	transition: opacity 6s ease-in-out;
-}
-.scroll-image-active {
-	opacity: 1;
 }
 
 .hidden-scroll-bar::-webkit-scrollbar {

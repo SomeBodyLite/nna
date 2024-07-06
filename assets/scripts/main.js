@@ -1,3 +1,5 @@
+const header = document.querySelector('#header');
+
 window.addEventListener('load', () => {
 	const textBlock = document.querySelectorAll('#slide-text');
 	textBlock.forEach((e) => {
@@ -19,7 +21,10 @@ window.addEventListener('load', () => {
 		e.classList.remove('top-[-1250px]');
 		e.classList.remove('top-[1250px]');
 	});
+	setVideoEvents();
+});
 
+const setVideoEvents = () => {
 	const video = document.querySelectorAll('#hover-video-parent');
 	video.forEach((e) => {
 		const videos = e.querySelectorAll('video');
@@ -49,85 +54,240 @@ window.addEventListener('load', () => {
 			});
 		});
 	});
-});
+};
+
+let currentBlocks = {
+	title: null,
+	card: null,
+
+	baseBlock: null,
+	itemBlock1: null,
+	itemBlock2: null,
+	itemBlock1Margin: null,
+
+	textCollection: null,
+	textNameCollection: null,
+	scrollElem: null,
+};
+
 let flagToScroll = false;
-const itemBlock2 = document.getElementById('item-block2');
-const itemBlock1 = document.getElementById('item-block1');
-const itemBlock1Margin = document.getElementById('item-block1-margin');
+const cardHome = document.querySelector('#card-home');
+const cardFear = document.querySelector('#card-fear');
+const setBlockData = (card) => {
+	currentBlocks.title = card;
+	if ((card != 'home') | 'fear') {
+		console.log('неверное значение');
+	}
+
+	currentBlocks.card = card == 'home' ? cardHome : cardFear;
+
+	currentBlocks.baseBlock = currentBlocks.card.querySelector('#base-block');
+
+	console.log(currentBlocks);
+
+	currentBlocks.textCollection =
+		currentBlocks.baseBlock.querySelector('#movable-text');
+	currentBlocks.textNameCollection =
+		currentBlocks.baseBlock.querySelector('#movable-text-2');
+	currentBlocks.scrollElem =
+		currentBlocks.baseBlock.querySelector('#hidden-scroll');
+	currentBlocks.itemBlock2 =
+		currentBlocks.baseBlock.querySelector('#item-block2');
+	currentBlocks.itemBlock1 =
+		currentBlocks.baseBlock.querySelector('#item-block1');
+	currentBlocks.itemBlock1Margin = currentBlocks.baseBlock.querySelector(
+		'#item-block1-margin'
+	);
+
+	console.log(currentBlocks);
+	moveBlock();
+};
+
 function handleWheel(event) {
-	event.preventDefault(); // Отменяем стандартное поведение прокрутки колесом мыши
+	event.preventDefault();
 	if (!flagToScroll) {
 		flagToScroll = true;
-		itemBlock2.scrollIntoView({ behavior: 'smooth' });
+		currentBlocks.itemBlock2.scrollIntoView({ behavior: 'smooth' });
 		setTimeout(() => {
 			flagToScroll = false;
 		}, 500);
 	}
 }
 
-let blockIsOpen = false;
-const block = document.querySelector('#movable-block');
-const header = document.querySelector('#header');
-const moveLeftBlock = () => {
-	blockIsOpen = true;
-	document.body.classList.add('overflow-hidden');
+const moveBlock = () => {
+	document.body.classList.add(
+		'md:overflow-visible',
+		'xl:overflow-hidden',
+		'overflow-visible'
+	);
 	header.scrollIntoView({ behavior: 'smooth' });
 
-	block.addEventListener('wheel', handleWheel);
-	block.classList.add('movable-block-active');
+	currentBlocks.baseBlock.addEventListener('wheel', handleWheel);
+	currentBlocks.baseBlock.classList.add('z-50');
+	currentBlocks.baseBlock.classList.add('bg-black');
+	currentBlocks.baseBlock.classList.add('movable-block-active');
 
-	itemBlock1Margin.classList.remove('mr-auto');
-	itemBlock1Margin.classList.add('mx-auto');
-	itemBlock1.classList.add('reverse-wrapper');
+	if (currentBlocks.title == 'fear') {
+		currentBlocks.baseBlock.classList.add(
+			'left-[calc((-100vw+32px)+(100vw/2))]'
+		);
+		currentBlocks.baseBlock.classList.remove(
+			'xl:top-[60px]',
+			'md:top-[760px]',
+			'top-[607px]',
+			'md:left-[60px]',
+			'left-[32px]'
+		);
+	} else {
+		currentBlocks.baseBlock.classList.add('left-[0px]');
+		currentBlocks.baseBlock.classList.remove(
+			'md:top-[60px]',
+			'top-[32px]',
+			'md:left-[60px]',
+			'left-[32px]'
+		);
+	}
 
-	const text = document.querySelector('#movable-text');
-	text.classList.remove('translate-x-[-134%]');
-	text.classList.add('translate-x-[-50%]');
+	currentBlocks.itemBlock1.classList.add('reverse-wrapper');
 
-	const textSec = document.querySelector('#movable-text-2');
-	textSec.classList.add('md:text-[124px]');
+	currentBlocks.textCollection.classList.remove('text-sm');
+	currentBlocks.textCollection.classList.add(
+		'pb-[24px]',
+		'text-[24px]',
+		'translate-x-[-50%]',
+		'left-1/2'
+	);
 
-	const scroll = document.querySelector('#hidden-scroll');
-	scroll.classList.remove('hidden');
+	currentBlocks.textNameCollection.classList.add('md:text-[124px]');
+
 	setTimeout(() => {
-		scroll.classList.add('scroll-image-active', 'flex');
-	}, 100);
+		currentBlocks.scrollElem.classList.add('opacity-100');
+	}, 1000);
 	setTimeout(() => {
-		itemBlock2.classList.remove('hidden');
+		currentBlocks.itemBlock2.classList.remove('hidden');
 	}, 1000);
 };
 
-const unMoveLeftBlock = () => {
-	blockIsOpen = false;
-	document.body.classList.remove('overflow-hidden');
+const hideBlock = () => {
+	document.body.classList.remove(
+		'md:overflow-visible',
+		'xl:overflow-hidden',
+		'overflow-visible'
+	);
 
 	if (!flagToScroll) {
 		flagToScroll = true;
-		itemBlock1.scrollIntoView({ block: 'end', behavior: 'smooth' });
+		currentBlocks.itemBlock1.scrollIntoView({
+			block: 'end',
+			behavior: 'smooth',
+		});
 
 		flagToScroll = false;
 	}
 	setTimeout(() => {
-		itemBlock1.classList.remove('reverse-wrapper');
+		currentBlocks.baseBlock.removeEventListener('wheel', handleWheel);
+		currentBlocks.itemBlock1.classList.remove('reverse-wrapper');
 
-		block.classList.remove('movable-block-active');
+		currentBlocks.itemBlock2.classList.add('hidden');
 
-		const text = document.querySelector('#movable-text');
-		text.classList.add('translate-x-[-134%]');
-		text.classList.remove('translate-x-[-50%]');
+		currentBlocks.textCollection.classList.add('text-sm');
+		currentBlocks.textCollection.classList.remove(
+			'pb-[24px]',
+			'text-[24px]',
+			'translate-x-[-50%]',
+			'left-1/2'
+		);
 
-		const textSec = document.querySelector('#movable-text-2');
-		textSec.classList.remove('md:text-[124px]');
+		currentBlocks.textNameCollection.classList.remove('md:text-[124px]');
 
-		const scroll = document.querySelector('#hidden-scroll');
-		scroll.classList.add('hidden');
+		currentBlocks.scrollElem.classList.remove('opacity-100');
 
-		scroll.classList.remove('scroll-image-active', 'flex');
-		itemBlock2.classList.add('hidden');
+		if (currentBlocks.title == 'fear') {
+			currentBlocks.baseBlock.classList.remove(
+				'left-[calc((-100vw+32px)+(100vw/2))]'
+			);
+			currentBlocks.baseBlock.classList.add(
+				'xl:top-[60px]',
+				'md:top-[760px]',
+				'top-[607px]',
+				'md:left-[60px]',
+				'left-[32px]'
+			);
+		} else {
+			currentBlocks.baseBlock.classList.remove('left-[0px]');
+			currentBlocks.baseBlock.classList.add(
+				'md:top-[60px]',
+				'top-[32px]',
+				'md:left-[60px]',
+				'left-[32px]'
+			);
+		}
+		currentBlocks.baseBlock.classList.remove('movable-block-active');
+		currentBlocks.baseBlock.classList.remove('z-50');
+		currentBlocks.baseBlock.classList.remove('bg-black');
 	}, 800);
+};
 
-	setTimeout(() => {
-		itemBlock1Margin.classList.add('mr-auto');
-		itemBlock1Margin.classList.remove('mx-auto');
-	}, 2000);
+let currentColorHome = 'black';
+const switchColorHome = (color) => {
+	if (currentColorHome == color) {
+		return;
+	} else {
+		const containersVideo = document.querySelectorAll('.videos-home');
+		containersVideo.forEach((container) => {
+			const videos = container.querySelectorAll('video');
+			videos.forEach((video) => {
+				video.setAttribute('src', `./assets/videos/home_${color}.mp4`);
+			});
+		});
+		const containerBtns = document.querySelectorAll('.home-btns');
+
+		containerBtns.forEach((cont) => {
+			const btns = cont.querySelectorAll('.cursor-pointer');
+			btns.forEach((btn) => {
+				if (btn.classList.contains('bg-[#8B8B8B1F]')) {
+					btn.classList.remove('bg-[#8B8B8B1F]');
+					btn.classList.add('bg-[#8B8B8B3D]');
+				} else {
+					btn.classList.add('bg-[#8B8B8B1F]');
+					btn.classList.remove('bg-[#8B8B8B3D]');
+				}
+			});
+		});
+
+		currentColorHome = color;
+	}
+	setVideoEvents();
+};
+
+let currentColorFear = 'white';
+const switchColorFear = (color) => {
+	if (currentColorFear == color) {
+		return;
+	} else {
+		const containersVideo = document.querySelectorAll('.videos-fear');
+		containersVideo.forEach((container) => {
+			const videos = container.querySelectorAll('video');
+			videos.forEach((video) => {
+				video.setAttribute('src', `./assets/videos/fear_${color}.mp4`);
+			});
+		});
+
+		const containerBtns = document.querySelectorAll('.fear-btns');
+		containerBtns.forEach((cont) => {
+			const btns = cont.querySelectorAll('.cursor-pointer');
+			btns.forEach((btn) => {
+				if (btn.classList.contains('bg-[#8B8B8B1F]')) {
+					btn.classList.remove('bg-[#8B8B8B1F]');
+					btn.classList.add('bg-[#8B8B8B3D]');
+				} else {
+					btn.classList.add('bg-[#8B8B8B1F]');
+					btn.classList.remove('bg-[#8B8B8B3D]');
+				}
+			});
+		});
+
+		currentColorFear = color;
+	}
+	setVideoEvents();
 };

@@ -36,39 +36,40 @@
 				>
 					<!-- левая карточка  -->
 					<div
-						class="md:p-[60px] p-[32px] flex flex-row w-full xl:h-full md:h-[550px] h-[575px] overflow-hidden"
+						class="md:p-[60px] p-[32px] flex flex-row w-full xl:h-full md:h-[700px] h-[575px] xl:relative md:overflow-hidden overflow-visible xl:overflow-visible"
+						id="card-home"
 					>
 						<div
-							class="bg-black z-50 movable-block overflow-auto md:overflow-hidden hidden-scroll-bar"
-							id="movable-block"
+							class="z-20 movable-block overflow-visible xl:overflow-hidden hidden-scroll-bar md:top-[60px] top-[32px] md:left-[60px] left-[32px] w-[246px]"
+							id="base-block"
 						>
 							<div
 								class="h-full flex flex-col items-center justify-stretch duration-[1000ms]"
 								id="item-block1"
 							>
 								<div
-									class="flex flex-col gap-[24px] movable-text h-full w-fit mr-auto justify-center"
+									class="flex flex-col gap-[24px] movable-text h-full w-fit justify-center"
 									id="item-block1-margin"
 								>
-									<div class="relative">
+									<div>
 										<p
-											class="absolute left-1/2 translate-x-[-134%] font-dmMono text-sm uppercase leading-none text-[#808080] pl-0 duration-500"
+											class="relative w-fit left-0 font-dmMono text-sm uppercase leading-none text-[#808080] duration-500"
 											id="movable-text"
 										>
 											/collection
 										</p>
-									</div>
 
-									<h2
-										class="text-[70px] leading-none uppercase transition-all duration-700"
-										id="movable-text-2"
-									>
-										home
-									</h2>
+										<h2
+											class="text-[70px] leading-none uppercase transition-all duration-700"
+											id="movable-text-2"
+										>
+											home
+										</h2>
+									</div>
 								</div>
 
 								<div
-									class="hidden mb-[77px] scroll-image flex-col justify-center gap-[21px] place-self-center"
+									class="pointer-events-none mb-[77px] opacity-0 transition-opacity duration-200 flex-col justify-center gap-[21px] place-self-center flex"
 									id="hidden-scroll"
 								>
 									<img
@@ -85,11 +86,11 @@
 							</div>
 
 							<div
-								class="h-fit md:h-full w-full flex md:flex-row flex-col justify-center items-center xl:gap-[211px] gap-[90px] hidden bg-black"
+								class="h-fit xl:h-full w-full flex xl:flex-row flex-col justify-center items-center xl:gap-[211px] gap-[90px] hidden bg-black"
 								id="item-block2"
 							>
 								<div
-									class="w-fit h-fit"
+									class="max-w-[345px] md:w-full w-auto h-fit videos-home"
 									id="hover-video-parent"
 								>
 									<video
@@ -99,32 +100,22 @@
 										autoplay
 										playsinline
 										loop
-									>
-										<source
-											src="./assets/videos/home black.mp4"
-										/>
-										Your browser does not support the video
-										tag.
-									</video>
+										src="./assets/videos/home_black.mp4"
+									></video>
 									<video
 										class="rounded-lg shadow-lg md:h-[71dvh] h-[58dvh] md:block hidden"
 										id="video-without-slide"
 										muted
-									>
-										<source
-											src="./assets/videos/home black.mp4"
-										/>
-										Your browser does not support the video
-										tag.
-									</video>
+										src="./assets/videos/home_black.mp4"
+									></video>
 								</div>
 								<div
-									class="flex flex-col gap-[60px] xl:max-w-[470px] md:max-w-[240px] p-[32px] md:p-0"
+									class="flex flex-col gap-[60px] xl:max-w-[470px] md:max-w-[500px] w-full p-[32px] xl:p-0"
 								>
 									<div class="flex flex-col gap-[20px]">
 										<button
 											class="w-fit"
-											onclick="unMoveLeftBlock()"
+											onclick="hideBlock()"
 										>
 											<p
 												class="font-dmMono text-sm text-[#808080] uppercase leading-none"
@@ -149,10 +140,11 @@
 										turpis tempus.
 									</p>
 									<div
-										class="flex flex-row gap-[17px] relative z-10"
+										class="flex flex-row gap-[17px] relative z-30 home-btns"
 									>
 										<div
-											class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+											onclick="switchColorHome('black')"
+											class="cursor-pointer bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 										>
 											<div
 												class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -165,7 +157,8 @@
 										</div>
 
 										<div
-											class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+											onclick="switchColorHome('white')"
+											class="cursor-pointer bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 										>
 											<div
 												class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -177,21 +170,26 @@
 											</p>
 										</div>
 									</div>
-									<button
-										class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit mb-[102px] md:mb-0"
+									<a
+										href="https://t.me/NNA1618"
+										target="_blank"
 									>
-										<p
-											class="font-dmMono text-sm leading-none uppercase"
+										<button
+											class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit mb-[102px] md:mb-0"
 										>
-											buy for €49.99
-										</p>
-									</button>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												buy for 3000₽
+											</p>
+										</button>
+									</a>
 								</div>
 							</div>
 						</div>
 
 						<div
-							class="flex flex-col gap-[32px] w-full h-full relative z-10"
+							class="flex flex-col gap-[32px] w-full h-full relative z-10 videos-home"
 							id="hover-video-parent"
 						>
 							<div
@@ -199,19 +197,22 @@
 							>
 								<button
 									id="animated-btn-sec-p"
-									onclick="moveLeftBlock()"
+									onclick="setBlockData(`home`)"
 									class="md:relative absolute bottom-0 left-0 animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
 								>
 									<p
 										class="font-dmMono text-sm leading-none uppercase"
 									>
-										buy for €49.99
+										buy for 3000₽
 									</p>
 								</button>
 							</div>
-							<div class="flex flex-row gap-[17px] relative z-10">
+							<div
+								class="flex flex-row gap-[17px] relative z-30 home-btns"
+							>
 								<div
-									class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+									onclick="switchColorHome('black')"
+									class="cursor-pointer bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 								>
 									<div
 										class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -224,7 +225,8 @@
 								</div>
 
 								<div
-									class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+									onclick="switchColorHome('white')"
+									class="cursor-pointer bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 								>
 									<div
 										class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -236,73 +238,215 @@
 									</p>
 								</div>
 							</div>
-
-							<video
-								class="rounded-lg shadow-lg slide-in-video md:h-[71vh] h-[45vh] absolute -z-0 top-[104px] md:top-0 md:hidden block"
-								id="video"
-								muted
-								autoplay
-								playsinline
-								loop
+							<div
+								class="w-full h-[45dvh] overflow-hidden absolute top-[80px] md:hidden block"
 							>
-								<source src="./assets/videos/home black.mp4" />
-								Your browser does not support the video tag.
-							</video>
+								<video
+									class="rounded-lg shadow-lg slide-in-video h-[45vh] relative -z-0"
+									id="video"
+									muted
+									autoplay
+									playsinline
+									loop
+									src="./assets/videos/home_black.mp4"
+								></video>
+							</div>
 							<video
 								class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 top-[104px] md:top-0 hidden md:block"
 								id="video"
 								muted
-							>
-								<source src="./assets/videos/home black.mp4" />
-								Your browser does not support the video tag.
-							</video>
+								src="./assets/videos/home_black.mp4"
+							></video>
 						</div>
 					</div>
 
-					<div class="xl:py-[31px] py-0 px-[32px] relative z-10">
+					<div
+						class="xl:py-[31px] py-0 px-[32px] xl:px-0 relative z-10"
+					>
 						<div
 							class="bg-[#434343] md:h-full h-px md:w-px w-full"
 						></div>
 					</div>
 					<!-- правая карточка  -->
 					<div
-						class="md:p-[60px] p-[32px] xl:h-full md:h-[550px] h-[575px] flex flex-row w-full overflow-hidden bg-black"
+						class="md:p-[60px] p-[32px] xl:h-full md:h-[700px] h-[575px] flex flex-row w-full bg-black xl:relative md:overflow-hidden overflow-visible xl:overflow-visible"
+						id="card-fear"
 					>
-						<div class="flex flex-col gap-[32px] w-full h-full">
+						<div
+							class="z-20 movable-block overflow-visible xl:overflow-hidden hidden-scroll-bar xl:top-[60px] md:top-[760px] top-[607px] md:left-[60px] left-[32px] w-[222px]"
+							id="base-block"
+						>
 							<div
-								class="flex flex-col gap-[32px] w-full h-full relative"
-								id="hover-video-parent"
+								class="h-full flex flex-col items-center justify-stretch duration-[1000ms]"
+								id="item-block1"
 							>
-								<div class="flex flex-row justify-between z-10">
-									<div class="flex flex-col gap-[12px]">
+								<div
+									class="flex flex-col gap-[24px] movable-text h-full w-fit justify-center"
+									id="item-block1-margin"
+								>
+									<div>
 										<p
-											class="font-dmMono text-sm uppercase leading-none text-[#808080]"
+											class="relative w-fit left-0 font-dmMono text-sm uppercase leading-none text-[#808080] duration-500"
+											id="movable-text"
 										>
 											/collection
 										</p>
 
 										<h2
-											class="text-[70px] leading-none uppercase"
+											class="text-[70px] leading-none uppercase transition-all duration-700"
+											id="movable-text-2"
 										>
 											fear
 										</h2>
 									</div>
+								</div>
+
+								<div
+									class="pointer-events-none mb-[77px] opacity-0 transition-opacity duration-200 flex-col justify-center gap-[21px] place-self-center flex"
+									id="hidden-scroll"
+								>
+									<img
+										src="./assets/svg/scroll.svg"
+										alt=""
+										class="h-[77px]"
+									/>
+									<p
+										class="text-base uppercase font-dmMono text-[#808080]"
+									>
+										SCROLL FOR MORE
+									</p>
+								</div>
+							</div>
+
+							<div
+								class="h-fit xl:h-full w-full flex xl:flex-row flex-col justify-center items-center xl:gap-[211px] gap-[90px] hidden bg-black"
+								id="item-block2"
+							>
+								<div
+									class="max-w-[345px] md:w-full w-auto h-fit videos-fear"
+									id="hover-video-parent"
+								>
+									<video
+										class="rounded-lg shadow-lg h-[58vh] md:hidden block"
+										id="video-without-slide"
+										muted
+										autoplay
+										playsinline
+										loop
+										src="./assets/videos/fear_white.mp4"
+									></video>
+									<video
+										class="rounded-lg shadow-lg md:h-[71dvh] h-[58dvh] md:block hidden"
+										id="video-without-slide"
+										muted
+										src="./assets/videos/fear_white.mp4"
+									></video>
+								</div>
+								<div
+									class="flex flex-col gap-[60px] xl:max-w-[470px] md:max-w-[500px] w-full p-[32px] xl:p-0"
+								>
+									<div class="flex flex-col gap-[20px]">
+										<button
+											class="w-fit"
+											onclick="hideBlock()"
+										>
+											<p
+												class="font-dmMono text-sm text-[#808080] uppercase leading-none"
+											>
+												<- BACK TO STORE
+											</p>
+										</button>
+
+										<h2 class="text-[70px] uppercase">
+											fear
+										</h2>
+									</div>
+
+									<p
+										class="font-dmMono text-sm leading-[26px] uppercase text-[#C8C8C8]"
+									>
+										Lorem ipsum dolor sit amet consectetur.
+										Tempus proin eget sagittis habitant
+										sagittis. Et dolor nibh non neque.
+										Gravida gravida proin sit eget.
+										Suspendisse pellentesque facilisi ut
+										turpis tempus.
+									</p>
+									<div
+										class="flex flex-row gap-[17px] relative z-30 fear-btns"
+									>
+										<div
+											onclick="switchColorFear('black')"
+											class="cursor-pointer bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										>
+											<div
+												class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+											></div>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												black
+											</p>
+										</div>
+
+										<div
+											onclick="switchColorFear('white')"
+											class="cursor-pointer bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										>
+											<div
+												class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
+											></div>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												white
+											</p>
+										</div>
+									</div>
+									<a
+										href="https://t.me/NNA1618"
+										target="_blank"
+									>
+										<button
+											class="rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] w-fit mb-[102px] md:mb-0"
+										>
+											<p
+												class="font-dmMono text-sm leading-none uppercase"
+											>
+												buy for 3000₽
+											</p>
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex flex-col gap-[32px] w-full h-full">
+							<div
+								class="flex flex-col gap-[32px] w-full h-full relative videos-fear"
+								id="hover-video-parent"
+							>
+								<div
+									class="flex flex-row justify-end h-[91px] z-10"
+								>
 									<button
+										onclick="setBlockData(`fear`)"
 										id="animated-btn-sec-p"
-										class="md:relative absolute bottom-0 animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
+										class="md:relative absolute bottom-0 left-0 animated-btn-sec-p rounded-[111px] bg-[#8B8B8B1F] py-[8px] px-[20px] h-fit hover:bg-[#8B8B8B3D] hover:py-[20px] hover:px-10 transition-padding"
 									>
 										<p
 											class="font-dmMono text-sm leading-none uppercase"
 										>
-											buy for €69.99
+											buy for 3000₽
 										</p>
 									</button>
 								</div>
 								<div
-									class="flex flex-row gap-[17px] relative z-10"
+									class="flex flex-row gap-[17px] relative z-30 fear-btns"
 								>
 									<div
-										class="bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										onclick="switchColorFear('black')"
+										class="cursor-pointer bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 									>
 										<div
 											class="bg-black w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -315,7 +459,8 @@
 									</div>
 
 									<div
-										class="bg-[#8B8B8B1F] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
+										onclick="switchColorFear('white')"
+										class="cursor-pointer bg-[#8B8B8B3D] rounded-[111px] pl-[4px] py-[4px] pr-[20px] flex flex-row gap-2.5 items-center w-fit"
 									>
 										<div
 											class="bg-white w-[26px] h-[26px] rounded-[111px] border-[1px] border-[#676767]"
@@ -327,26 +472,25 @@
 										</p>
 									</div>
 								</div>
-
-								<video
-									class="rounded-lg shadow-lg slide-in-video md:h-[71vh] h-[45vh] absolute -z-0 md:top-0 top-[115px] md:hidden block"
-									id="video"
-									muted
-									autoplay
-									playsinline
-									loop
+								<div
+									class="w-full h-[45dvh] overflow-hidden absolute top-[80px] md:hidden block"
 								>
-									<source src="./assets/videos/sdf.mp4" />
-									Your browser does not support the video tag.
-								</video>
+									<video
+										class="rounded-lg shadow-lg slide-in-video h-[45vh] relative -z-0"
+										id="video"
+										muted
+										autoplay
+										playsinline
+										loop
+										src="./assets/videos/fear_white.mp4"
+									></video>
+								</div>
 								<video
 									class="rounded-lg shadow-lg slide-in-video md:h-[71dvh] h-[45dvh] absolute -z-0 md:top-0 top-[115px] hidden md:block"
 									id="video"
 									muted
-								>
-									<source src="./assets/videos/sdf.mp4" />
-									Your browser does not support the video tag.
-								</video>
+									src="./assets/videos/fear_white.mp4"
+								></video>
 							</div>
 						</div>
 					</div>
